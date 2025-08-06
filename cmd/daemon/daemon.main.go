@@ -2,16 +2,17 @@
 Copyright © 2025 NAME HERE <EMAIL ADDRESS>
 
 */
-package cmd
+package daemon
 
 import (
 	"fmt"
-
 	"github.com/spf13/cobra"
+	"dext/cmd/daemon/check"
+	"dext/cmd/daemon/expose"
 )
 
 // daemonCmd represents the daemon command
-var daemonCmd = &cobra.Command{
+var DaemonCmd = &cobra.Command{
 	Use:   "daemon",
 	Short: "A brief description of your command",
 	Long: `A longer description that spans multiple lines and likely contains examples
@@ -21,20 +22,14 @@ Cobra is a CLI library for Go that empowers applications.
 This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("daemon called")
-	}
+		fmt.Println("[dext/daemon] AAAAAAAAAaaaaa Daemon neeee")
+	},
 }
 
 func init() {
-	rootCmd.AddCommand(daemonCmd)
-
-	// Here you will define your flags and configuration settings.
-
-	// Cobra supports Persistent Flags which will work for this command
-	// and all subcommands, e.g.:
-	// daemonCmd.PersistentFlags().String("foo", "", "A help for foo")
-
-	// Cobra supports local flags which will only run when this command
-	// is called directly, e.g.:
+	// cmd.rootCmd.AddCommand(daemonCmd)
+	fmt.Println("[dext/daemon] init")
+	DaemonCmd.AddCommand(check.CheckCmd)
+	DaemonCmd.AddCommand(expose.ExposeCmd)
 	// daemonCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }
